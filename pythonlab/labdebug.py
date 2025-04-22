@@ -1,4 +1,4 @@
-import os
+import requests
 
 numbers = [2,3,6,8]
 
