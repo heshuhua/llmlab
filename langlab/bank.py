@@ -6,13 +6,13 @@ from langchain import PromptTemplate
 
 
 
-app= Flask(__name__)
+bank= Flask(__name__)
 
-@app.route("/")
+@bank.route("/")
 def home():
     return "hello"
 
-@app.route("/predict",methods=['POST'])
+@bank.route("/predict",methods=['POST'])
 def predict():
     if request.method=='POST':
        data = request.get_data()
@@ -39,4 +39,4 @@ def predict():
         # return {'response': f'Received message: {message}'}
        return jsonify({'response': 'Message received:'+message})
 
-app.run()
+bank.run()
