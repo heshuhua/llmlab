@@ -11,7 +11,7 @@ from langchain.chains.router.multi_prompt_prompt import MULTI_PROMPT_ROUTER_TEMP
 
 
 withdraw_template = """你是银行资深柜员，非常善于处理客户取款问题。
-你会从输入信息中判断出是谁来做业务，给出客户姓名 username=张三
+你会从输入信息中判断出是谁来做业务，给出客户姓名 username=客户姓名
 你会判断客户到银行做的是什么交易，识别出取款交易给设置当前的 pcode=200101。
 你会从问题中识别出客户要取多少钱，比如取3000， 那amount=3000。
 你会从客户是否是代为他人办理，如果是代办，需要设置agent=true，如果是本人办理或没有识别出来，则设置agent=false
@@ -47,7 +47,9 @@ prompt_infos = [
     },
 ]
 
-llm = OllamaLLM(model="llama3.1:latest",temperature=0)
+llm = OllamaLLM(model="llama3.1:latest",temperature=0.9)
+#llm = OllamaLLM(model="deepseek-r1:32b",temperature=0.9)
+
 
 destination_chains = {}
 # 遍历prompt_infos列表，为每个信息创建一个LLMChain。
