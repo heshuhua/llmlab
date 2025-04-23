@@ -11,6 +11,7 @@ from langchain.chains.router.multi_prompt_prompt import MULTI_PROMPT_ROUTER_TEMP
 
 
 withdraw_template = """你是银行资深柜员，非常善于处理客户取款问题。
+你会从输入信息中判断出是谁来做业务，给出客户姓名 username=张三
 你会判断客户到银行做的是什么交易，识别出取款交易给设置当前的 pcode=200101。
 你会从问题中识别出客户要取多少钱，比如取3000， 那amount=3000。
 你会从客户是否是代为他人办理，如果是代办，需要设置agent=true，如果是本人办理或没有识别出来，则设置agent=false
@@ -18,18 +19,19 @@ withdraw_template = """你是银行资深柜员，非常善于处理客户取款
 这是一个客户业务：
 {input}
 
-请只输出pcode，amount，agent的信息
+请只输出 username,pcode，amount，agent的信息
 """
 
 
 despoit_template =  """你是银行资深柜员，非常善于处理客户存款问题。
+你会从输入信息中判断出是谁来做业务，给出客户姓名 username=李四
 你会判断客户到银行做的是什么交易，识别出存款交易给设置当前的 pcode=200102。
 你会从问题中识别出客户要存多少钱，比如存3000， 那amount=3000。
 
 这是一个客户业务：
 {input}
 
-请只输出pcode和amount的信息
+请只输出 username,pcode和amount的信息
 """
 
 prompt_infos = [
@@ -87,6 +89,8 @@ chain = MultiPromptChain(
 
 def getResult(text):
     print('getresult-'+text)
+    username_match = re.search(r"username\s*=\s*(\w+)", text)
+    print(username_match)
     pcode_match = re.search(r"pcode\s*=\s*(\w+)", text)
     print(pcode_match)
     amount_match = re.search(r"amount\s*=\s*(\d+)", text)
@@ -96,6 +100,8 @@ def getResult(text):
 
     result = {}
 
+    if username_match:
+        result['username'] = username_match.group(1)
     if pcode_match:
         result['pcode'] = pcode_match.group(1)
     if amount_match:
@@ -128,6 +134,7 @@ def predict():
        print("2----")
        tmpstr=llmResult['text']
        print(tmpstr)
+       print("3----")
     
        return(getResult(tmpstr))
 
