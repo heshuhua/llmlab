@@ -13,7 +13,11 @@ from langchain.prompts import PromptTemplate
 from langchain.chains.router.llm_router import LLMRouterChain,RouterOutputParser
 from langchain.chains.router.multi_prompt_prompt import MULTI_PROMPT_ROUTER_TEMPLATE
 
+#50M
 model = Model('/Users/heshuhua/lab/ailab/voicelab/vosk-model-small-cn-0.22')
+
+#1.3G
+#model = Model('/Users/heshuhua/lab/ailab/voicelab/vosk-model-cn-0.22')
 def transcribe(stream, new_chunk):
 
     sample_rate, audio_data = new_chunk
@@ -75,7 +79,7 @@ prompt_infos = [
     },
 ]
 
-llm = OllamaLLM(model="llama3.1:latest",temperature=0.9)
+llm = OllamaLLM(model="deepseek-r1:8b",temperature=0.9)
 #llm = OllamaLLM(model="deepseek-r1:32b",temperature=0.9)
 
 
@@ -174,7 +178,7 @@ def toggle_deposit_withdraw(show_deposit):
 
 biztxt = gr.Textbox()
 with gr.Blocks() as demo:
-    gr.Markdown("## 语音业w务")
+    gr.Markdown("## 语音业务")
 
     gr.Interface(
     fn=transcribe,
