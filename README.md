@@ -25,3 +25,6 @@ langchain练习
 
 ## dataconn
 数据链接练习
+
+## cvlab
+使用opencv进行图像识别，数据，训练，识别。
