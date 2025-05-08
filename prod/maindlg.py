@@ -1,5 +1,6 @@
 import gradio as gr
 import time
+from datetime import datetime
 import audiomodel
 import appln
 import resutil
@@ -33,6 +34,9 @@ def bot(history: list):
 
 def bizhandle():
     print("调用---")
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    print(f"开始调用------当前时间 (时:分:秒): {current_time}")
     cardRec
 
 with gr.Blocks() as cardRec:
@@ -43,28 +47,33 @@ with gr.Blocks() as withDrawTx:
 with gr.Blocks() as demo:
     with gr.Row():
         with gr.Column():
-            biz_feedback = gr.Textbox(label="交易信息", placeholder="You can edit the translated text here...",lines=20)
+            #biz_feedback = gr.Textbox(label="交易信息", placeholder="You can edit the translated text here...",lines=20)
             @gr.render(inputs=manual_edit_c)
             def show_cardRec(text):
                 print(f"模型返回 --------{text}")
-                jsonstr= resutil.extract_values(text)
-                print(f"转化json --------{jsonstr}")
-                print(f"获取返回的pcode --------{jsonstr.get('pcode')}")
-                pcode = jsonstr.get('pcode')
+                
+                now = datetime.now()
+                current_time = now.strftime("%H:%M:%S")
+                print(f"模型返回调用------当前时间 (时:分:秒): {current_time}")
+                pcode = resutil.extract_pcode(text)
+                amount = resutil.extract_amount(text)
+                print(f"提取-------{text} --------{pcode}")
                 #jsonstr= json.dumps(jsonstr, ensure_ascii=False, indent=4)
-                if(len(text)==0):
-                    gr.Markdown("## 不需要身份识别")
+                
+                
+                if pcode == '200101':
+                    print(f"add --------{pcode}")
+                    if(resutil.convert_string_to_integer(amount)>=5000):
+                        gr.Markdown("## 需要身份识别")
+                        output_video = gr.Video(label="Processed Video", streaming=True, autoplay=True)
+                    gr.Textbox(label=f"取款交易",value=30)
+                    gr.Textbox(label=f"取款人")
+                    gr.Textbox(label=f"取款金额",value=f"{amount}")
+                    gr.Checkbox(label="是否代理人", info="代理人需要验证代理人身份?"),
                 else:
-                    if pcode == '200101':
-                        print(f"add --------{jsonstr.get('pcode')}")
-                        gr.Textbox(label=f"{jsonstr.get('pcode')}:取款交易")
-                        gr.Textbox(label=f"{jsonstr.get('pcode')}:取款人")
-                        gr.Textbox(label=f"{jsonstr.get('pcode')}:取款金额")
-                        gr.Checkbox(label="是否代理人", info="代理人需要验证代理人身份?"),
-                    else:
-                        gr.Textbox(label=f"存款交易")
-                        gr.Textbox(label=f"存款人")
-                        gr.Textbox(label=f"存款金额")
+                    gr.Textbox(label=f"存款交易")
+                    gr.Textbox(label=f"存款人")
+                    gr.Textbox(label=f"存款金额")
         
         with gr.Column():
             chatbot = gr.Chatbot(elem_id="chatbot", bubble_full_width=False, type="messages")

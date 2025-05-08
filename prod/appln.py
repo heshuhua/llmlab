@@ -16,7 +16,7 @@ withdraw_template = """你是银行资深柜员，非常善于处理客户取款
 这是一个客户业务：
 {input}
 
-请只输出 username,pcode，amount，agent的信息
+请用存文本返回交易信息中的 username,pcode，amount，agent的信息。
 """
 
 
@@ -28,7 +28,7 @@ despoit_template =  """你是银行资深柜员，非常善于处理客户存款
 这是一个客户业务：
 {input}
 
-请只输出 username,pcode和amount的信息
+请输出 username,pcode和amount的信息
 """
 
 prompt_infos = [
@@ -44,7 +44,8 @@ prompt_infos = [
     },
 ]
 
-llm = OllamaLLM(model="llama3.1:latest",temperature=0.9)
+llm = OllamaLLM(model="llama3.1:latest",temperature=0)
+#llm = OllamaLLM(model="llama3.1:latest",temperature=0)
 #llm = OllamaLLM(model="deepseek-r1:32b",temperature=0.9)
 
 
