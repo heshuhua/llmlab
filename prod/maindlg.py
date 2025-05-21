@@ -3,12 +3,13 @@ import time
 from datetime import datetime
 import audiomodel
 import appln
+#import appmodel
 import resutil
 import json
 
 # Chatbot demo with multimodal input (text, markdown, LaTeX, code blocks, image, audio, & video). Plus shows support for streaming text.
 
-
+#persontran=appmodel.Deposit
 def print_like_dislike(x: gr.LikeData):
     print(x.index, x.value, x.liked)
 
@@ -18,8 +19,12 @@ def add_message(history, message):
         history.append({"role": "user", "content": {"path": x}})
     if message["text"] is not None:
         history.append({"role": "user", "content": message["text"]})
-    appln.chain(message["text"])
+    #appln.chain(message["text"])
+    #appmodel.chain(message["text"])
+    #persontran=appmodel.chain.invoke({"text",message["text"]})
+    #return history, gr.MultimodalTextbox(value=None, interactive=False),appmodel.chain.invoke({"text",message["text"]})  #使用Person对象
     return history, gr.MultimodalTextbox(value=None, interactive=False),appln.chain(message["text"])
+
 
 manual_edit_c = gr.Textbox(label="交易信息", placeholder="You can edit the translated text here...")
 
