@@ -34,8 +34,11 @@ chain = prompt | llm | parser
 
 # 6. 运行链
 #text_to_parse = "John is a 30-year-old software engineer who enjoys hiking and reading."
-text_to_parse = "何树华已经50了，喜欢读书和做实验."
+#text_to_parse = "何树华已经50了，喜欢读书和做实验."
+text_to_parse = "张三取款50000."
 try:
+    Person2 = chain.invoke({"text": text_to_parse})
+    print(Person2)
     parsed_output: Person = chain.invoke({"text": text_to_parse})
     print(f"Parsed Name: {parsed_output.name}")
     print(f"Parsed Age: {parsed_output.age}")
