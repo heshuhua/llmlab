@@ -69,6 +69,7 @@ default_chain = ConversationChain(llm=llm, output_key="text")
 destinations = [f"{p['name']}: {p['description']}" for p in prompt_infos]
 # 使用join方法将列表转化为字符串，每个元素之间用换行符分隔
 destinations_str = "\n".join(destinations)
+print(destinations_str)
 # 根据MULTI_PROMPT_ROUTER_TEMPLATE格式化字符串和destinations_str创建路由模板
 router_template = MULTI_PROMPT_ROUTER_TEMPLATE.format(destinations=destinations_str)
 # 创建路由的PromptTemplate
