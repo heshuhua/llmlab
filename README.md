@@ -1,6 +1,9 @@
 # llmlab
 本项目是实验项目。
 
+## ocrlab
+在这里增加了 RapidOCR 的识别。
+
 ## baselab
 基础知识学些
 神经网络
