@@ -31,3 +31,6 @@ langchain练习
 
 ## cvlab
 使用opencv进行图像识别，数据，训练，识别。开始增加人脸识别，纳入到gradio中
+
+## nnlab 
+增加模型的练习
