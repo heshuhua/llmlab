@@ -1,0 +1,44 @@
+{
+  "os":  "macOS-14.4.1-arm64-arm-64bit",
+  "python":  "CPython 3.12.9",
+  "startedAt":  "2025-06-01T04:06:55.914578Z",
+  "program":  "/Users/heshuhua/lab/ailab/llmlab/trainlab/traintest.py",
+  "codePath":  "trainlab/traintest.py",
+  "git":  {
+    "remote":  "https://github.com/heshuhua/llmlab.git",
+    "commit":  "a484ecea27beb38dce0c4deaec5f3e842a80a479"
+  },
+  "email":  "heshuhua@gmail.com",
+  "root":  "/Users/heshuhua/lab/ailab/llmlab/trainlab",
+  "host":  "MacBook-Pro.local",
+  "executable":  "/opt/anaconda3/envs/dgai/bin/python",
+  "codePathLocal":  "traintest.py",
+  "cpu_count":  8,
+  "cpu_count_logical":  8,
+  "disk":  {
+    "/":  {
+      "total":  "994662584320",
+      "used":  "994433581056"
+    },
+    "/System/Volumes/Data":  {
+      "total":  "994662584320",
+      "used":  "994433581056"
+    }
+  },
+  "memory":  {
+    "total":  "34359738368"
+  },
+  "cpu":  {
+    "count":  8,
+    "countLogical":  8
+  },
+  "apple":  {
+    "name":  "Apple M1 Pro",
+    "ecpuCores":  2,
+    "pcpuCores":  6,
+    "gpuCores":  14,
+    "memoryGb":  32,
+    "swapTotalBytes":  "23890755584",
+    "ramTotalBytes":  "34359738368"
+  }
+}

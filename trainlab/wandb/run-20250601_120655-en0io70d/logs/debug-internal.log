@@ -1,0 +1,7 @@
+{"time":"2025-06-01T12:06:55.917459+08:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/Users/heshuhua/lab/ailab/llmlab/trainlab/wandb/run-20250601_120655-en0io70d/logs/debug-core.log"}
+{"time":"2025-06-01T12:06:56.50037+08:00","level":"INFO","msg":"created new stream","id":"en0io70d"}
+{"time":"2025-06-01T12:06:56.500444+08:00","level":"INFO","msg":"stream: started","id":"en0io70d"}
+{"time":"2025-06-01T12:06:56.500485+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"en0io70d"}
+{"time":"2025-06-01T12:06:56.500623+08:00","level":"INFO","msg":"handler: started","stream_id":"en0io70d"}
+{"time":"2025-06-01T12:06:56.500638+08:00","level":"INFO","msg":"sender: started","stream_id":"en0io70d"}
+{"time":"2025-06-01T12:06:56.928372+08:00","level":"INFO","msg":"Starting system monitor"}
