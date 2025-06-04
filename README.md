@@ -37,3 +37,6 @@ langchain练习
 
 ## mcplab
 在增加mcplab
+
+## gitlab
+增加git tag
