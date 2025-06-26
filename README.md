@@ -40,3 +40,6 @@ langchain练习
 
 ## gitlab
 增加git tag
+
+## liblab
+作为知识库的版本。

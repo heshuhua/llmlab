@@ -1,0 +1,21 @@
+transformers==4.40.2
+peft==0.10.0
+datasets>=2.19.0
+accelerate>=0.28.0
+
+# ✅ 可用版本的 bitsandbytes（支持 QLoRA ）
+bitsandbytes==0.42.0
+
+sentencepiece
+protobuf>=3.20.0
+
+scikit-learn
+evaluate
+
+tqdm
+rich
+
+# 如果使用 GPU
+torch>=2.1.0
+
+
